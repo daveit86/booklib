@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <form name="bookform" action="" method="post">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text">
+        <label for="author">Author</label>
+        <input id="author" name="author" type="text">
+        <label for="pages">Pages</label>
+        <input id="pages" name="pages" type="number">
+        <label for="readyes">Read</label>
+        <input id="readyes" name="read" type="radio" >
+        <label for="readno">Not Read</label>
+        <input id="readno" name="read" type="radio" >
+        <button name="submitbtn" type="submit">Submit</button>
+    </form>
+    <div id="library">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>read</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
