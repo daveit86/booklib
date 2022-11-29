@@ -24,7 +24,8 @@ form{
     margin: 1em;
     padding: 1em;
     width: min-content;
-    gap:1em
+    gap:1em;
+    align-self: center;
 }
 
 form *{
@@ -36,6 +37,7 @@ form *{
     width: min-content;
     border: 1px solid black;
     margin: 1em;
+    align-self: center;
 }
 
 #library th, #library td{
