@@ -3,6 +3,7 @@ const submitBtn=document.forms.bookform.submitbtn;
 submitBtn.addEventListener("click",(event)=>{
     event.preventDefault();
     console.log("submit disabled!");
+    addBookToLibrary();
 })
 
 //Constructor
@@ -20,13 +21,29 @@ Book.prototype.toTD = function(elem){
     return td;
 }
 
+Book.prototype.createDeleteBtn = function(){
+    const td = document.createElement("td");
+    const btn = document.createElement("button");
+    btn.innerText = "Delete";
+    btn.addEventListener("click",()=>{
+        console.log(`Deleting ${this.title}`);
+        Books = Books.filter(obj => {
+            return obj.title!==this.title;
+        })
+        updateLibrary();
+    })
+    td.appendChild(btn);
+    return td;
+}
+
 Book.prototype.toTableRow = function(){
     const row = document.createElement("tr");
-        row.appendChild(this.toTD(this.title))
-        row.appendChild(this.toTD(this.author))
-        row.appendChild(this.toTD(this.pages))
-        row.appendChild(this.toTD(this.read?"Read":"Not Read"))
-        row.appendChild(this.toTD(""))
+        row.dataset.title = this.title;
+        row.appendChild(this.toTD(this.title));
+        row.appendChild(this.toTD(this.author));
+        row.appendChild(this.toTD(this.pages));
+        row.appendChild(this.toTD(this.read?"Read":"Not Read"));
+        row.appendChild(this.createDeleteBtn());
     return row;
 }
 
@@ -35,13 +52,33 @@ Books=[];
 
 //functions
 
-function addBookToLibrary(title, author, pages, read){
-    Books.push(new Book(title, author, pages, read));
+function addBookToLibrary(){
+    const myform = document.forms.bookform;
+    console.log(`Adding ${myform.title.value} by ${myform.author.value}, ${myform.pages.value} pages, read:${myform.read.value}`);
+    if(myform.title.value!="" && myform.author.value!="" && myform.pages.value!="" && myform.read.value!="")
+    {
+        if(Books.filter(obj=>{obj.title===myform.title.value}).length == 0)
+        {
+            Books.push(new Book(myform.title.value, myform.author.value, myform.pages.value, myform.read.value));
+        }
+        else
+        {
+            console.warn("Book already exists!");
+            alert("Book already exists!");
+        }
+    }
+    else
+    {
+        console.warn("Incorrect inputs!");
+        alert("Incorrect inputs!");
+    }
+    updateLibrary();
 }
 
 function updateLibrary()
 {
     const tBody = document.querySelector("#library tbody");
+    const library2 = document.querySelector("#library2");
     tBody.innerHTML="";
     Books.forEach(element => {
         tBody.appendChild(element.toTableRow());

@@ -11,15 +11,15 @@
 <body>
     <form name="bookform" action="" method="post">
         <label for="title">Title</label>
-        <input id="title" name="title" type="text">
+        <input id="title" name="title" type="text" required>
         <label for="author">Author</label>
-        <input id="author" name="author" type="text">
+        <input id="author" name="author" type="text" required>
         <label for="pages">Pages</label>
-        <input id="pages" name="pages" type="number">
+        <input id="pages" name="pages" type="number" required>
         <label for="readyes">Read</label>
-        <input id="readyes" name="read" type="radio" >
+        <input id="readyes" name="read" type="radio" checked required>
         <label for="readno">Not Read</label>
-        <input id="readno" name="read" type="radio" >
+        <input id="readno" name="read" type="radio" required>
         <button name="submitbtn" type="submit">Submit</button>
     </form>
     <div id="library">
@@ -34,9 +34,9 @@
                 </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
     </div>
+    <div id="library2"></div>
 </body>
 </html>
