@@ -57,7 +57,8 @@ function addBookToLibrary(){
     console.log(`Adding ${myform.title.value} by ${myform.author.value}, ${myform.pages.value} pages, read:${myform.read.value}`);
     if(myform.title.value!="" && myform.author.value!="" && myform.pages.value!="" && myform.read.value!="")
     {
-        if(Books.filter(obj=>{obj.title===myform.title.value}).length == 0)
+        console.log(`found ${Books.filter(obj=>obj.title===myform.title.value).length}`)
+        if(Books.filter(obj=>obj.title===myform.title.value).length == 0)
         {
             Books.push(new Book(myform.title.value, myform.author.value, myform.pages.value, myform.read.value));
         }
